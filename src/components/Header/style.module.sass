@@ -6,17 +6,30 @@
 	background: $color-primary
 	display: flex
 	align-items: flex-end
-	padding: 0 100px
+	padding: 0 200px
 
-	h2
-		color: $color-white
-		margin-bottom: 90px
-		margin-left: -80px
+
+.logo
+	position: relative
+	.gameCanvas
+		background: $color-primary
+		max-height: 150px
+		// max-width: 500px
+		// border: 1px solid black
+		// opacity
+	
+	span
+		display: flex
+		position: absolute
+		min-width: 300px
+		top: 29px
+		left: 168px
 		opacity: 0.9
 
-.gameCanvas
-	background: $color-primary
-	max-height: 150px
-	// max-width: 500px
-	// border: 1px solid black
-	// opacity
+		h2	
+			color: $color-white
+			opacity: 0
+			transition: opacity 1s ease-in-out
+
+			&.show
+				opacity: 0.95

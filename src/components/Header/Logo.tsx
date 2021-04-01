@@ -1,12 +1,12 @@
-import React, { useEffect, useRef } from 'react'
+import cx from 'classnames'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './style.module.sass'
 
-interface Props {
-    onFadeInHeader: (value: boolean) => void
-}
+interface Props {}
 
 const Logo: React.FC<Props> = (props) => {
     const canvasRef = useRef<null | HTMLCanvasElement>(null)
+    const [fadeInHeader, setFadeInHeader] = useState(0)
 
     useEffect(() => {
         if (canvasRef.current) {
@@ -323,82 +323,82 @@ const Logo: React.FC<Props> = (props) => {
                 eighteenthCount < 100 ? eighteenthCount : 100
             )
 
-            firstCount += 2
+            firstCount += 2.5
 
             if (firstCount >= 250) {
-                secondCount += 2
+                secondCount += 2.5
             }
 
             if (firstCount >= 300) {
-                thirdCount += 2
+                thirdCount += 2.5
             }
 
             if (firstCount >= 350) {
-                fourthCount += 2
+                fourthCount += 2.5
             }
 
             if (firstCount >= 400) {
-                fifthCount += 2
+                fifthCount += 2.5
             }
 
             if (firstCount >= 450) {
-                sixthCount += 2
+                sixthCount += 2.5
             }
 
             if (firstCount >= 500) {
-                seventhCount += 2
+                seventhCount += 2.5
             }
 
             if (firstCount >= 550) {
-                eighthCount += 2
+                eighthCount += 2.5
             }
 
             if (firstCount >= 600) {
-                ninthCount += 2
+                ninthCount += 2.5
             }
 
             if (firstCount >= 700) {
-                tenthCount += 2
+                tenthCount += 2.5
             }
 
             if (firstCount >= 750) {
-                eleventhCount += 2
+                eleventhCount += 2.5
             }
 
             if (firstCount >= 800) {
-                twelthCount += 2
+                twelthCount += 2.5
             }
 
             if (firstCount >= 850) {
-                thirteenthCount += 2
+                thirteenthCount += 2.5
             }
 
             if (firstCount >= 900) {
-                fourteenthCount += 2
+                fourteenthCount += 2.5
             }
 
             if (firstCount >= 950) {
-                fifteenthCount += 2
+                fifteenthCount += 2.5
             }
 
             if (firstCount >= 1000) {
-                sixteenthCount += 2
+                sixteenthCount += 2.5
             }
 
             if (firstCount >= 1050) {
-                seventeenthCount += 2
+                seventeenthCount += 2.5
             }
 
             if (firstCount >= 1100) {
-                eighteenthCount += 2
+                eighteenthCount += 2.5
             }
 
             if (firstCount >= 1150) {
-                nineteenthCount += 2
+                nineteenthCount += 2.5
             }
 
-            if (firstCount > 1000) {
-                props.onFadeInHeader(true)
+            if (firstCount > 600) {
+                setFadeInHeader(firstCount - 600)
             }
 
             if (firstCount > 1350) {
@@ -410,13 +410,120 @@ const Logo: React.FC<Props> = (props) => {
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles.logo}>
             <canvas
                 className={styles.gameCanvas}
                 ref={canvasRef}
                 width="1000"
                 height="600"
             />
+            <span>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 0,
+                    })}
+                >
+                    H
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 40,
+                    })}
+                >
+                    a
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 80,
+                    })}
+                >
+                    r
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 120,
+                    })}
+                >
+                    r
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 160,
+                    })}
+                >
+                    i
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 200,
+                    })}
+                >
+                    s
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 240,
+                    })}
+                >
+                    -
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 280,
+                    })}
+                >
+                    J
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 320,
+                    })}
+                >
+                    e
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 360,
+                    })}
+                >
+                    d
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 400,
+                    })}
+                >
+                    a
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 440,
+                    })}
+                >
+                    m
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 480,
+                    })}
+                >
+                    s
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 520,
+                    })}
+                >
+                    k
+                </h2>
+                <h2
+                    className={cx({
+                        [styles.show]: fadeInHeader > 560,
+                    })}
+                >
+                    i
+                </h2>
+            </span>
         </div>
     )
 }
