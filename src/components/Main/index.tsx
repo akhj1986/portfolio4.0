@@ -1,10 +1,18 @@
-import React from 'react'
+import cx from 'classnames'
+import React, { useContext } from 'react'
+import { store } from 'store'
 import styles from './style.module.sass'
 
 const Main: React.FC = () => {
+    const { state } = useContext(store)
+
     return (
         <div className={styles.container}>
-            <p>
+            <p
+                className={cx({
+                    [styles.fadeIn]: state.count > 1050,
+                })}
+            >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
                 convallis arcu dui, eget convallis velit fermentum ac.
                 Vestibulum turpis tortor, condimentum ut aliquet id, volutpat
@@ -18,8 +26,11 @@ const Main: React.FC = () => {
                 ut nisi elementum consectetur. Integer eget leo vitae augue
                 aliquam porta eu sit amet tellus.
             </p>
-            <p>
-                {' '}
+            <p
+                className={cx({
+                    [styles.fadeIn]: state.count > 1150,
+                })}
+            >
                 Mauris aliquam ligula a ligula gravida viverra. Morbi tristique
                 ex tempor molestie cursus. Proin a ultricies dui. Maecenas
                 elementum odio ac tincidunt ornare. Cras mi turpis, malesuada at
@@ -28,8 +39,11 @@ const Main: React.FC = () => {
                 lobortis condimentum. Fusce vel imperdiet arcu. Ut ut sem lorem.
                 Maecenas lacinia venenatis malesuada.
             </p>
-            <p>
-                {' '}
+            <p
+                className={cx({
+                    [styles.fadeIn]: state.count > 1250,
+                })}
+            >
                 Donec in erat vel nisi vehicula fermentum. Nam facilisis magna
                 non orci feugiat, sit amet facilisis urna fermentum. Quisque
                 dignissim lobortis tortor in dictum. Duis gravida justo arcu, ut
@@ -39,7 +53,11 @@ const Main: React.FC = () => {
                 sem. Vestibulum a purus ut ipsum aliquet pharetra id eu quam.
                 Duis interdum mollis est, at scelerisque est.{' '}
             </p>
-            <p>
+            <p
+                className={cx({
+                    [styles.fadeIn]: state.count > 1300,
+                })}
+            >
                 Nam tincidunt interdum ante eget viverra. In consequat quam
                 gravida egestas lacinia. Suspendisse pulvinar nibh nec orci
                 convallis, in feugiat mauris ornare. Vestibulum ante ipsum
@@ -54,8 +72,11 @@ const Main: React.FC = () => {
                 ac, bibendum magna. Quisque laoreet ante at risus scelerisque
                 dictum.
             </p>
-            <p>
-                {' '}
+            <p
+                className={cx({
+                    [styles.fadeIn]: state.count > 1350,
+                })}
+            >
                 Etiam diam purus, lobortis vitae aliquet eget, ornare sed velit.
                 Mauris vitae semper orci. Integer gravida porta quam, vel
                 posuere neque pulvinar in. Maecenas vitae lacus in nisl aliquam

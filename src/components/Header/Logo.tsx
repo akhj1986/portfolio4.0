@@ -1,28 +1,60 @@
 import cx from 'classnames'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { actions, store } from 'store'
 import styles from './style.module.sass'
 
 interface Props {}
 
 const Logo: React.FC<Props> = (props) => {
+    const { state, dispatch } = useContext(store)
     const canvasRef = useRef<null | HTMLCanvasElement>(null)
+    const lineCanvasRef = useRef<null | HTMLCanvasElement>(null)
     const [fadeInHeader, setFadeInHeader] = useState(0)
+    const startLineRef = useRef<boolean>(false)
 
     useEffect(() => {
         if (canvasRef.current) {
-            const canvas = canvasRef.current
-            const ctx = canvas.getContext('2d')
+            const ctx = canvasRef.current.getContext('2d')
 
             if (ctx) {
                 draw(ctx)
             }
         }
+
+        if (lineCanvasRef.current) {
+            const lineCtx = lineCanvasRef.current.getContext('2d')
+
+            if (lineCtx) {
+                drawLine(lineCtx)
+            }
+        }
     }, [])
+
+    const drawLine = (ctx: CanvasRenderingContext2D) => {
+        const cH = ctx.canvas.height
+        const cW = ctx.canvas.width
+        let count = 0
+
+        const animate = () => {
+            ctx.clearRect(0, 0, cW, cH)
+            ctx.fillStyle = 'rgba(218, 0, 118, 0.8)' //pink
+            ctx.fillRect(0, 0, 2, count)
+
+            if (startLineRef.current === true) {
+                count += 3.5
+            }
+
+            if (count > 700) {
+                clearInterval(interval)
+            }
+        }
+
+        const interval = setInterval(animate, 1)
+    }
 
     const draw = (ctx: CanvasRenderingContext2D) => {
         const cH = ctx.canvas.height
         const cW = ctx.canvas.width
-        let firstCount = 0
         let secondCount = 0 //first = 250
         let thirdCount = 0 //first = 300
         let fourthCount = 0 //first = 350
@@ -43,7 +75,7 @@ const Logo: React.FC<Props> = (props) => {
         let nineteenthCount = 0 //first = 1150
 
         const animate = () => {
-            console.log('count1', firstCount)
+            console.log('count1', state.count)
             ctx.clearRect(0, 0, cW, cH)
             ctx.fillStyle = 'rgba(0, 118, 218, 0.8)'
 
@@ -51,9 +83,9 @@ const Logo: React.FC<Props> = (props) => {
             ctx.fillStyle = '#76DA00' // green
             ctx.fillRect(
                 500,
-                firstCount < 250 ? cH - firstCount : cH - 250,
+                state.count < 250 ? cH - state.count : cH - 250,
                 10,
-                firstCount < 250 ? cH - firstCount : 250
+                state.count < 250 ? cH - state.count : 250
             )
             ctx.fillRect(
                 500,
@@ -261,7 +293,7 @@ const Logo: React.FC<Props> = (props) => {
             )
 
             // // 3
-            ctx.fillStyle = 'rgba(218, 0, 118, 0.8)' //pink
+            ctx.fillStyle = '#76DA00' // green
             ctx.fillRect(
                 150,
                 cH - 150,
@@ -323,85 +355,89 @@ const Logo: React.FC<Props> = (props) => {
                 eighteenthCount < 100 ? eighteenthCount : 100
             )
 
-            firstCount += 2.5
+            dispatch(actions.incrementCount((state.count += 3.5)))
 
-            if (firstCount >= 250) {
-                secondCount += 2.5
+            if (state.count >= 250) {
+                secondCount += 3.5
             }
 
-            if (firstCount >= 300) {
-                thirdCount += 2.5
+            if (state.count >= 300) {
+                thirdCount += 3.5
             }
 
-            if (firstCount >= 350) {
-                fourthCount += 2.5
+            if (state.count >= 350) {
+                fourthCount += 3.5
             }
 
-            if (firstCount >= 400) {
-                fifthCount += 2.5
+            if (state.count >= 400) {
+                fifthCount += 3.5
             }
 
-            if (firstCount >= 450) {
-                sixthCount += 2.5
+            if (state.count >= 450) {
+                sixthCount += 3.5
             }
 
-            if (firstCount >= 500) {
-                seventhCount += 2.5
+            if (state.count >= 500) {
+                seventhCount += 3.5
             }
 
-            if (firstCount >= 550) {
-                eighthCount += 2.5
+            if (state.count >= 550) {
+                eighthCount += 3.5
             }
 
-            if (firstCount >= 600) {
-                ninthCount += 2.5
+            if (state.count >= 600) {
+                ninthCount += 3.5
             }
 
-            if (firstCount >= 700) {
-                tenthCount += 2.5
+            if (state.count >= 700) {
+                tenthCount += 3.5
             }
 
-            if (firstCount >= 750) {
-                eleventhCount += 2.5
+            if (state.count >= 750) {
+                eleventhCount += 3.5
             }
 
-            if (firstCount >= 800) {
-                twelthCount += 2.5
+            if (state.count >= 800) {
+                twelthCount += 3.5
             }
 
-            if (firstCount >= 850) {
-                thirteenthCount += 2.5
+            if (state.count >= 850) {
+                thirteenthCount += 3.5
             }
 
-            if (firstCount >= 900) {
-                fourteenthCount += 2.5
+            if (state.count >= 900) {
+                fourteenthCount += 3.5
             }
 
-            if (firstCount >= 950) {
-                fifteenthCount += 2.5
+            if (state.count >= 950) {
+                fifteenthCount += 3.5
             }
 
-            if (firstCount >= 1000) {
-                sixteenthCount += 2.5
+            if (state.count >= 1000) {
+                sixteenthCount += 3.5
             }
 
-            if (firstCount >= 1050) {
-                seventeenthCount += 2.5
+            if (state.count >= 1050) {
+                seventeenthCount += 3.5
             }
 
-            if (firstCount >= 1100) {
-                eighteenthCount += 2.5
+            if (state.count >= 1100) {
+                eighteenthCount += 3.5
             }
 
-            if (firstCount >= 1150) {
-                nineteenthCount += 2.5
+            if (state.count >= 1150) {
+                nineteenthCount += 3.5
             }
 
-            if (firstCount > 600) {
-                setFadeInHeader(firstCount - 600)
+            if (state.count > 600) {
+                setFadeInHeader(state.count - 600)
             }
 
-            if (firstCount > 1350) {
+            if (state.count > 1050) {
+                startLineRef.current = true
+            }
+
+            if (state.count > 1350) {
                 clearInterval(interval)
             }
         }
@@ -412,10 +448,16 @@ const Logo: React.FC<Props> = (props) => {
     return (
         <div className={styles.logo}>
             <canvas
-                className={styles.gameCanvas}
+                className={styles.cityCanvas}
                 ref={canvasRef}
                 width="1000"
                 height="600"
+            />
+            <canvas
+                className={styles.lineCanvas}
+                ref={lineCanvasRef}
+                width="20"
+                height="700"
             />
             <span>
                 <h2

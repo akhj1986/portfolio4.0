@@ -6,17 +6,24 @@
 	background: $color-primary
 	display: flex
 	align-items: flex-end
-	padding: 0 200px
+	padding: 0 120px
 
 
 .logo
 	position: relative
-	.gameCanvas
+
+	.cityCanvas
 		background: $color-primary
 		max-height: 150px
 		// max-width: 500px
 		// border: 1px solid black
 		// opacity
+
+	.lineCanvas
+		position: absolute
+		top: 150px
+		right: -8px
+
 	
 	span
 		display: flex
@@ -33,3 +40,13 @@
 
 			&.show
 				opacity: 0.95
+
+.techStack
+	position: absolute
+	top: 30px
+	right: 40px
+
+	span
+		margin-right: 10px
+		color: $color-white
+		opacity: 0.5

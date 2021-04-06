@@ -1,37 +1,40 @@
 import React, { createContext, useReducer } from 'react'
 
 type State = {
-    siteOpen: boolean
+    count: number
 }
 
-type ActionTypes =
-    | {
-          type: 'CLOSE_SITE'
-      }
-    | {
-          type: 'OPEN_SITE'
-      }
-
-interface Actions {
-    [key: string]: ActionTypes
+type IncrementCount = {
+    type: 'INCREMENT_COUNT'
+    payload: number
 }
+
+type ActionTypes = IncrementCount
 
 interface IContextProps {
     state: State
     dispatch: React.Dispatch<ActionTypes>
 }
 
-export const actions: Actions = {
-    openSite: {
-        type: 'OPEN_SITE',
-    },
-    closeSite: {
-        type: 'CLOSE_SITE',
-    },
+const logAction = (action: ActionTypes, prevState: State, nextState: State) => {
+    const isDev = process.env.NODE_ENV === 'development'
+
+    if (isDev) {
+        console.info(`PREV STATE:`, prevState)
+        console.info(`ACTION: ${action.type}`, action.payload)
+        console.info('NEXT STATE:', nextState)
+    }
+}
+
+export const actions = {
+    incrementCount: (value: number): IncrementCount => ({
+        type: 'INCREMENT_COUNT',
+        payload: value,
+    }),
 }
 
 const initialState: State = {
-    siteOpen: false,
+    count: 0,
 }
 
 export const store = createContext({} as IContextProps)
@@ -40,23 +43,26 @@ const { Provider } = store
 
 const reducer = (state: State, action: ActionTypes) => {
     switch (action.type) {
-        case 'OPEN_SITE':
+        case 'INCREMENT_COUNT':
             return {
                 ...state,
-                siteOpen: true,
-            }
-        case 'CLOSE_SITE':
-            return {
-                ...state,
-                siteOpen: false,
+                count: action.payload,
             }
         default:
             return state
     }
 }
 
+const logReducer = (state: State, action: ActionTypes) => {
+    const nextState = reducer(state, action)
+
+    logAction(action, state, nextState)
+
+    return nextState
+}
+
 const StateProvider: React.FC = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const [state, dispatch] = useReducer(logReducer, initialState)
     const value = { state, dispatch }
 
     return <Provider value={value}>{children}</Provider>
