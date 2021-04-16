@@ -2,6 +2,8 @@ import React, { createContext, useReducer } from 'react'
 
 type State = {
     count: number
+    increment: number
+    contentHeight: number
 }
 
 type IncrementCount = {
@@ -9,21 +11,16 @@ type IncrementCount = {
     payload: number
 }
 
-type ActionTypes = IncrementCount
+type SetContentHeight = {
+    type: 'SET_CONTENT_HEIGHT'
+    payload: number
+}
+
+type ActionTypes = IncrementCount | SetContentHeight
 
 interface IContextProps {
     state: State
     dispatch: React.Dispatch<ActionTypes>
-}
-
-const logAction = (action: ActionTypes, prevState: State, nextState: State) => {
-    const isDev = process.env.NODE_ENV === 'development'
-
-    if (isDev) {
-        console.info(`PREV STATE:`, prevState)
-        console.info(`ACTION: ${action.type}`, action.payload)
-        console.info('NEXT STATE:', nextState)
-    }
 }
 
 export const actions = {
@@ -31,10 +28,16 @@ export const actions = {
         type: 'INCREMENT_COUNT',
         payload: value,
     }),
+    setContentHeight: (value: number): SetContentHeight => ({
+        type: 'SET_CONTENT_HEIGHT',
+        payload: value,
+    }),
 }
 
 const initialState: State = {
     count: 0,
+    increment: 4.5,
+    contentHeight: 1500,
 }
 
 export const store = createContext({} as IContextProps)
@@ -48,21 +51,27 @@ const reducer = (state: State, action: ActionTypes) => {
                 ...state,
                 count: action.payload,
             }
+        case 'SET_CONTENT_HEIGHT': {
+            return {
+                ...state,
+                contentHeight: action.payload,
+            }
+        }
         default:
             return state
     }
 }
 
-const logReducer = (state: State, action: ActionTypes) => {
-    const nextState = reducer(state, action)
+// const logReducer = (state: State, action: ActionTypes) => {
+//     const nextState = reducer(state, action)
 
-    logAction(action, state, nextState)
+//     logAction(action, state, nextState)
 
-    return nextState
-}
+//     return nextState
+// }
 
 const StateProvider: React.FC = ({ children }) => {
-    const [state, dispatch] = useReducer(logReducer, initialState)
+    const [state, dispatch] = useReducer(reducer, initialState)
     const value = { state, dispatch }
 
     return <Provider value={value}>{children}</Provider>

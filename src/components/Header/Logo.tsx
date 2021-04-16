@@ -1,16 +1,20 @@
 import cx from 'classnames'
+import { useWindowMeasure } from 'hooks'
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { actions, store } from 'store'
+import { store } from 'store'
 import styles from './style.module.sass'
 
 interface Props {}
 
 const Logo: React.FC<Props> = (props) => {
-    const { state, dispatch } = useContext(store)
+    const { state } = useContext(store)
     const canvasRef = useRef<null | HTMLCanvasElement>(null)
-    const lineCanvasRef = useRef<null | HTMLCanvasElement>(null)
+    const rightLineCanvasRef = useRef<null | HTMLCanvasElement>(null)
+    const leftLineCanvasRef = useRef<null | HTMLCanvasElement>(null)
     const [fadeInHeader, setFadeInHeader] = useState(0)
-    const startLineRef = useRef<boolean>(false)
+    const startRightLineRef = useRef<boolean>(false)
+    const startLeftLineRef = useRef<boolean>(false)
+    const { height } = useWindowMeasure()
 
     useEffect(() => {
         if (canvasRef.current) {
@@ -21,35 +25,60 @@ const Logo: React.FC<Props> = (props) => {
             }
         }
 
-        if (lineCanvasRef.current) {
-            const lineCtx = lineCanvasRef.current.getContext('2d')
+        if (rightLineCanvasRef.current) {
+            const lineCtx = rightLineCanvasRef.current.getContext('2d')
 
             if (lineCtx) {
-                drawLine(lineCtx)
+                drawRightLine(lineCtx)
+            }
+        }
+
+        if (leftLineCanvasRef.current) {
+            const lineCtx = leftLineCanvasRef.current.getContext('2d')
+
+            if (lineCtx) {
+                drawLeftLine(lineCtx)
             }
         }
     }, [])
 
-    const drawLine = (ctx: CanvasRenderingContext2D) => {
-        const cH = ctx.canvas.height
-        const cW = ctx.canvas.width
-        let count = 0
+    const drawLeftLine = (ctx: CanvasRenderingContext2D) => {
+        // const cH = ctx.canvas.height
+        // const cW = ctx.canvas.width
+        // let count = 0
+        // const animate = () => {
+        //     ctx.clearRect(0, 0, cW, cH)
+        //     // ctx.fillStyle = 'rgba(218, 0, 118, 0.8)' //pink
+        //     ctx.fillStyle = 'rgba(0,50,69, 0.2)' //primary
+        //     ctx.fillRect(0, 0, 2, count)
+        //     if (startLeftLineRef.current === true) {
+        //         count += state.increment
+        //     }
+        //     if (count > state.contentHeight) {
+        //         clearInterval(interval)
+        //     }
+        // }
+        // const interval = setInterval(animate, 1)
+    }
 
-        const animate = () => {
-            ctx.clearRect(0, 0, cW, cH)
-            ctx.fillStyle = 'rgba(218, 0, 118, 0.8)' //pink
-            ctx.fillRect(0, 0, 2, count)
-
-            if (startLineRef.current === true) {
-                count += 3.5
-            }
-
-            if (count > 700) {
-                clearInterval(interval)
-            }
-        }
-
-        const interval = setInterval(animate, 1)
+    const drawRightLine = (ctx: CanvasRenderingContext2D) => {
+        // const cH = ctx.canvas.height
+        // const cW = ctx.canvas.width
+        // let count = 0
+        // const animate = () => {
+        //     ctx.clearRect(0, 0, cW, cH)
+        //     // ctx.fillStyle = 'rgba(218, 0, 118, 0.8)' //pink
+        //     ctx.fillStyle = 'rgba(0,50,69, 0.2)' //primary
+        //     ctx.fillRect(0, 0, 2, count)
+        //     if (startRightLineRef.current === true) {
+        //         count += state.increment
+        //     }
+        //     console.log('state', state.contentHeight, count)
+        //     if (count > state.contentHeight) {
+        //         clearInterval(interval)
+        //     }
+        // }
+        // const interval = setInterval(animate, 1)
     }
 
     const draw = (ctx: CanvasRenderingContext2D) => {
@@ -75,7 +104,6 @@ const Logo: React.FC<Props> = (props) => {
         let nineteenthCount = 0 //first = 1150
 
         const animate = () => {
-            console.log('count1', state.count)
             ctx.clearRect(0, 0, cW, cH)
             ctx.fillStyle = 'rgba(0, 118, 218, 0.8)'
 
@@ -355,78 +383,76 @@ const Logo: React.FC<Props> = (props) => {
                 eighteenthCount < 100 ? eighteenthCount : 100
             )
 
-            dispatch(actions.incrementCount((state.count += 3.5)))
-
             if (state.count >= 250) {
-                secondCount += 3.5
+                secondCount += state.increment
             }
 
             if (state.count >= 300) {
-                thirdCount += 3.5
+                thirdCount += state.increment
             }
 
             if (state.count >= 350) {
-                fourthCount += 3.5
+                fourthCount += state.increment
             }
 
             if (state.count >= 400) {
-                fifthCount += 3.5
+                fifthCount += state.increment
             }
 
             if (state.count >= 450) {
-                sixthCount += 3.5
+                sixthCount += state.increment
             }
 
             if (state.count >= 500) {
-                seventhCount += 3.5
+                seventhCount += state.increment
             }
 
             if (state.count >= 550) {
-                eighthCount += 3.5
+                eighthCount += state.increment
             }
 
             if (state.count >= 600) {
-                ninthCount += 3.5
+                ninthCount += state.increment
             }
 
             if (state.count >= 700) {
-                tenthCount += 3.5
+                tenthCount += state.increment
             }
 
             if (state.count >= 750) {
-                eleventhCount += 3.5
+                eleventhCount += state.increment
             }
 
             if (state.count >= 800) {
-                twelthCount += 3.5
+                twelthCount += state.increment
             }
 
             if (state.count >= 850) {
-                thirteenthCount += 3.5
+                thirteenthCount += state.increment
             }
 
             if (state.count >= 900) {
-                fourteenthCount += 3.5
+                fourteenthCount += state.increment
             }
 
             if (state.count >= 950) {
-                fifteenthCount += 3.5
+                fifteenthCount += state.increment
             }
 
             if (state.count >= 1000) {
-                sixteenthCount += 3.5
+                sixteenthCount += state.increment
             }
 
             if (state.count >= 1050) {
-                seventeenthCount += 3.5
+                seventeenthCount += state.increment
             }
 
             if (state.count >= 1100) {
-                eighteenthCount += 3.5
+                eighteenthCount += state.increment
             }
 
             if (state.count >= 1150) {
-                nineteenthCount += 3.5
+                nineteenthCount += state.increment
             }
 
             if (state.count > 600) {
@@ -434,11 +460,12 @@ const Logo: React.FC<Props> = (props) => {
             }
 
             if (state.count > 1050) {
-                startLineRef.current = true
+                startRightLineRef.current = true
             }
 
             if (state.count > 1350) {
                 clearInterval(interval)
+                startLeftLineRef.current = true
             }
         }
 
@@ -454,10 +481,16 @@ const Logo: React.FC<Props> = (props) => {
                 height="600"
             />
             <canvas
-                className={styles.lineCanvas}
-                ref={lineCanvasRef}
+                className={styles.leftLineCanvas}
+                ref={leftLineCanvasRef}
                 width="20"
-                height="700"
+                height={state.contentHeight}
+            />
+            <canvas
+                className={styles.rightLineCanvas}
+                ref={rightLineCanvasRef}
+                width="20"
+                height={state.contentHeight}
             />
             <span>
                 <h2

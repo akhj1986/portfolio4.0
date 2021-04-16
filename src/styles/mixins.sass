@@ -1,3 +1,38 @@
+$phone-width-lg: 500px
+$tablet-width: 768px
+$desktop-width: 1024px
+$desktop-width-lg: 1367px
+$desktop-width-xl: 1600px
+$desktop-width-full: 1920px
+
+=phone-lg
+	@media (min-width: #{$phone-width-lg})
+		@content
+
+=tablet
+	@media (min-width: #{$tablet-width})
+		@content
+
+=lt-desktop
+	@media (max-width: #{$desktop-width - 1})
+		@content
+
+=desktop
+	@media (min-width: #{$desktop-width})
+		@content
+
+=desktop-lg
+	@media (min-width: #{$desktop-width-lg})
+		@content
+
+=desktop-xl
+	@media (min-width: #{$desktop-width-xl})
+		@content
+
+=desktop-full
+	@media (min-width: #{$desktop-width-full})
+		@content
+	
 =container
 	padding: 40px
 	display: flex

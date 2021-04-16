@@ -1,40 +1,47 @@
 @import 'styles/index.sass'
 
 .header
-	min-height: 200px
-	width: 100%
+	min-height: 120px
+	max-width: 100vW
 	background: $color-primary
 	display: flex
 	align-items: flex-end
-	padding: 0 120px
+	padding: 0 10px
 
 
 .logo
 	position: relative
+	display: flex
+	align-items: flex-end
 
 	.cityCanvas
 		background: $color-primary
-		max-height: 150px
-		// max-width: 500px
-		// border: 1px solid black
-		// opacity
+		max-height: 80px
 
-	.lineCanvas
+	.rightLineCanvas
 		position: absolute
 		top: 150px
 		right: -8px
+		display: none
+
+	.leftLineCanvas
+		position: absolute
+		top: 150px
+		left: 13px
+		display: none
 
 	
 	span
 		display: flex
 		position: absolute
 		min-width: 300px
-		top: 29px
-		left: 168px
+		top: 15px
+		left: 88px
 		opacity: 0.9
 
 		h2	
 			color: $color-white
+			font-size: 18px
 			opacity: 0
 			transition: opacity 1s ease-in-out
 
@@ -43,10 +50,155 @@
 
 .techStack
 	position: absolute
-	top: 30px
-	right: 40px
+	top: 10px
+	right: 10px
+	opacity: 0
+	transition: opacity 1s ease-in-out
+	font-size: 10px
+
+	&.show
+		opacity: 1
 
 	span
-		margin-right: 10px
+		margin-right: 4px
 		color: $color-white
 		opacity: 0.5
+		font-size: 10px
+
++phone-lg
+	.header
+		min-height: 130px
+		padding: 0 30px
+
+	.logo
+		.cityCanvas
+			max-height: 100px
+
+		span
+			top: 20px
+			left: 112px
+
+			h2
+				font-size: 20px
+
+	.techStack
+		top: 15px
+		right: 15px
+
++tablet
+	.header
+		min-height: 140px
+		padding: 0 20px
+
+	.logo
+		.cityCanvas
+			max-height: 110px
+
+		span
+			top: 21px
+			left: 123px
+
+			h2
+				font-size: 22px
+
+		.leftLineCanvas
+			display: block
+			top: 110px
+			left: 9px
+			opacity: 0.4
+
+@media (min-width: 940px)
+	.logo
+		left: calc((100vw - 960px) / 2)
+
++desktop
+	.header
+		min-height: 150px
+	
+	.logo
+		left: calc((100vw - 980px) / 2)
+
+		.cityCanvas
+			max-height: 120px
+
+		span
+			top: 23px
+			left: 136px
+
+			h2
+				font-size: 25px
+
+		.leftLineCanvas
+			left: 10px
+			opacity: 0.5
+
+	.techStack
+		top: 20px
+		right: 20px
+		font-size: 13px
+
+		span
+			font-size: 13px
+
+
++desktop-lg
+	.header
+		min-height: 170px
+
+	.logo
+		left: calc((100vw - 1050px) / 2)
+
+		.cityCanvas
+			max-height: 140px
+
+		span
+			top: 27px
+			left: 158px
+		
+			h2
+				font-size: 30px
+
+		.leftLineCanvas
+			opacity: 0.7
+			top: 140px
+			left: 12px	
+		
+
+	.techStack
+		top: 20px
+		right: 20px
+		font-size: 14px
+
+		span
+			margin-right: 6px
+			font-size: 14px
+
++desktop-xl
+	.header
+		min-height: 200px
+
+	.logo
+		left: calc((100vw - 1450px) / 2)
+
+		.cityCanvas
+			max-height: 150px
+		
+		span
+			top: 29px
+			left: 168px
+			
+			h2
+				font-size: 34px
+
+		.leftLineCanvas
+			display: none
+
+		.rightLineCanvas
+			display: block
+			opacity: 0.8
+			
+	.techStack
+		font-size: 16px
+
+		span
+			font-size: 16px

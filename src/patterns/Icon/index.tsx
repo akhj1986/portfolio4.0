@@ -29,7 +29,6 @@ export type IconVariant = 'subtle'
 
 interface Props extends FontAwesomeIconProps {
     variant?: IconVariant
-    fab?: boolean
 }
 
 const Icon: React.FC<Props> = (props) => {

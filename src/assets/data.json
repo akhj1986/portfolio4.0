@@ -1,0 +1,39 @@
+{
+    "contactDetails": [
+        {
+            "type": "email",
+            "id": 1,
+            "aClass": "contactLink",
+            "href": "mailto:alex@alexhj.com",
+            "icon": "envelope",
+            "text": "alex@alexhj.com"
+        },
+        {
+            "type": "phone",
+            "id": 2,
+            "aClass": "contactLink",
+            "href": "tel:+44-7383-156359",
+            "icon": "mobile-alt",
+            "text": "+44 7383 156359"
+        },
+        {
+            "type": "cv",
+            "id": 3,
+            "aClass": "contactLink",
+            "href": "cv",
+            "target": "_blank",
+            "icon": "file",
+            "text": "CV: Download"
+        },
+        {
+            "type": "linked-in",
+            "id": 4,
+            "aClass": "contactLink",
+            "href": "https://www.linkedin.com/in/alex-harris-jedamski",
+            "target": "_blank",
+            "icon": "linkedin-in",
+            "fab": true,
+            "text": "LinkedIn"
+        }
+    ]
+}
