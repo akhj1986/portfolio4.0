@@ -1,4 +1,6 @@
+import img from 'assets/headshot3.jpg'
 import cx from 'classnames'
+import Icon from 'patterns/Icon'
 import React from 'react'
 import styles from './style.module.sass'
 
@@ -13,23 +15,25 @@ const Blurb: React.FC<Props> = (props) => (
             [styles.fadeIn]: props.count - props.delay > 1050,
         })}
     >
-        {/* <div className={styles.header}>
-            <h3>Front-End Developer</h3>
-            <img src={img} alt="" />
-        </div> */}
-        <h3>Front-End Developer</h3>
+        <h3>
+            <span>{'<'}</span>ModernWebApps <span>{'/>'}</span>
+        </h3>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-            convallis arcu dui, eget convallis velit fermentum ac. Vestibulum
-            turpis tortor, condimentum ut aliquet id, volutpat sed erat. Mauris
-            consequat hendrerit diam ut congue. Aenean ut commodo orci. Morbi
-            non iaculis est, sed varius lacus. Sed vulputate erat non rutrum
-            sagittis. Etiam vel elementum dolor, at tempus tortor. Duis
-            consectetur venenatis nulla, eget pulvinar lectus vulputate eget.
-            Etiam imperdiet elementum dui, sed laoreet ipsum pulvinar et.
-            Suspendisse pulvinar varius neque, at viverra lorem ultrices eget.
-            Vestibulum faucibus diam ut nisi elementum consectetur. Integer eget
-            leo vitae augue aliquam porta eu sit amet tellus.
+            <img src={img} alt="" />
+            Hi, I'm Alex, a front-end developer who has been building
+            professional web applications using the React ecosystem since 2019.
+            I am passionate about developing in clean, re-usable code and
+            providing elegant and usable design. I believe when it comes to UX
+            design that neither form nor function can be disposed with. As a
+            React developer, I take great pleasure in functional programming
+            (hooks are surely the most beautiful invention of the past 5 years{' '}
+            <span className={styles.emoji}>
+                <Icon icon="smile-beam" size="lg" />
+            </span>
+            ), while still recognising that object-oriented programming has its
+            place within React applications. I pay great attention to detail in
+            the code, function and apperance of applications. I care about the
+            work I do!
         </p>
     </div>
 )

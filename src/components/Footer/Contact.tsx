@@ -9,32 +9,18 @@ const Contact: React.FC = () => {
 
     return (
         <div className={styles.contactContainer}>
-            <div className={styles.contact}>
-                <ul>
-                    {contactDetails.slice(0, 2).map((item, i) => (
-                        <ContactLink
-                            key={i}
-                            text={item.text}
-                            href={item.href}
-                            fab={item.fab}
-                            target={item.target}
-                            icon={item.icon as IconType}
-                        />
-                    ))}
-                </ul>
-                <ul>
-                    {contactDetails.slice(2, 4).map((item, i) => (
-                        <ContactLink
-                            key={i}
-                            text={item.text}
-                            href={item.href}
-                            fab={item.fab}
-                            target={item.target}
-                            icon={item.icon as IconType}
-                        />
-                    ))}
-                </ul>
-            </div>
+            <ul className={styles.contact}>
+                {contactDetails.map((item, i) => (
+                    <ContactLink
+                        key={i}
+                        text={item.text}
+                        href={item.href}
+                        fab={item.fab}
+                        target={item.target}
+                        icon={item.icon as IconType}
+                    />
+                ))}
+            </ul>
         </div>
     )
 }

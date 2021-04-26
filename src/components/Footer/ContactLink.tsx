@@ -1,5 +1,4 @@
 import { IconName } from '@fortawesome/fontawesome-common-types'
-import cv from 'assets/cv.pdf'
 import Icon, { IconType } from 'patterns/Icon'
 import React from 'react'
 import styles from './style.module.sass'
@@ -22,11 +21,7 @@ const ContactLink: React.FC<Props> = (props) => {
                     }
                 />
             </div>
-            <a
-                href={props.href === 'cv' ? cv : props.href}
-                target={props.target}
-                rel="noreferrer"
-            >
+            <a href={props.href} target={props.target} rel="noreferrer">
                 {props.text}
             </a>
         </li>

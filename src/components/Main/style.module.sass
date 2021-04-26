@@ -6,12 +6,19 @@
 
 .blurb
 	// border-bottom: 1px solid rgba(218,0,118, 0.7)
-	margin-bottom: 80px
+	margin-bottom: 40px
 	padding-bottom: 40px
 	opacity: 0
 	transition: opacity 1s ease-in-out
 	display: flex
 	flex-direction: column
+
+	img
+		max-width: 90px
+		border-radius: 50%
+		margin-right: 20px
+		float: left
+		opacity: 0.9
 
 	&.fadeIn
 		opacity: 1
@@ -19,30 +26,49 @@
 	h3
 		margin-bottom: 20px
 		align-self: flex-end
-		padding-right: 20px
 		opacity: 0.9
 		color: darken($color-blue, 5%)
 
 		&.left
 			align-self: flex-start
 
-.header
-	display: flex
-	margin-bottom: 40px
-	align-items: center
-	// align-self: flex-start
-	justify-content: flex-end
-	width: 100%
-	padding-right: 20px
-	max-width: 800px
+		span
+			font-size: 24px
+			color: $color-secondary
 
-	h3
-		margin-bottom: 0
+	ul
+		padding-left: 20px
+		margin-bottom: 10px 
 
-	img
-		max-width: 100px
-		border-radius: 50%
-		margin-left: 20px
+		li
+			margin-left: 20px
+			position: relative
+			margin-bottom: 10px
+
+			&::before
+				content: ''
+				position: absolute
+				left: -18px
+				top: 4px
+				min-width: 8px
+				max-width: 8px
+				min-height: 8px
+				max-height: 8px
+				background-color: $color-secondary
+				border-radius: 50%
+
+
+.emoji
+	background: $color-font
+	border-radius: 50%
+	
+	svg
+		color: #F1E602
+		max-height: 20px
+		min-height: 20px
+		max-width: 20px
+		min-width: 20px
+		margin-bottom: 1px
 
 +tablet
 	.container
@@ -50,6 +76,27 @@
 
 +desktop
 	.blurb
+		p
+			line-height: 28px
+
 		h3
 			font-size: 28px
+
+			span
+				font-size: 28px
+
+		img
+			max-width: 100px
+
+		ul
+			li
+				&::before
+					top: 6px
+
+	.emoji
+		svg
+			max-height: 22px
+			min-height: 22px
+			max-width: 22px
+			min-width: 22px
 

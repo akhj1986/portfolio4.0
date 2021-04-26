@@ -13,26 +13,40 @@ const TechStack: React.FC<Props> = (props) => (
             [styles.fadeIn]: props.count - props.delay > 1150,
         })}
     >
-        <h3 className={styles.left}>Tech Stack</h3>
+        <h3 className={styles.left}>
+            <span>{'<'}</span>TechStack <span>{'/>'}</span>
+        </h3>
         <p>
-            Mauris aliquam ligula a ligula gravida viverra. Morbi tristique ex
-            tempor molestie cursus. Proin a ultricies dui. Maecenas elementum
-            odio ac tincidunt ornare. Cras mi turpis, malesuada at egestas ac,
-            pharetra vitae eros. Sed augue orci, fringilla nec rhoncus eget,
-            viverra in nibh. Praesent semper diam vitae turpis lobortis
-            condimentum. Fusce vel imperdiet arcu. Ut ut sem lorem. Maecenas
-            lacinia venenatis malesuada.
+            I have worked primarily within a React environment that includes
+            Redux for state management (including Redux-Saga for handling
+            side-effects). I have developed in both TypeScript and ES6, with a
+            preference for TypeScript, especially once an application reaches a
+            certain size (about the same time an application is large enough to
+            warrant Redux!). I normally use Sass modules for styling, though
+            have also developed with Styled-Components.
         </p>
         <p>
-            Donec in erat vel nisi vehicula fermentum. Nam facilisis magna non
-            orci feugiat, sit amet facilisis urna fermentum. Quisque dignissim
-            lobortis tortor in dictum. Duis gravida justo arcu, ut pulvinar
-            velit tempus nec. Suspendisse eget vulputate sem, nec consequat
-            risus. Pellentesque pulvinar, tellus at aliquam convallis, mauris
-            nibh cursus metus, a cursus urna lacus non sem. Vestibulum a purus
-            ut ipsum aliquet pharetra id eu quam. Duis interdum mollis est, at
-            scelerisque est.{' '}
+            I have built smaller applications using React's native Context API
+            for state management to reduce overheads associated with Redux.
         </p>
+        <p>
+            The React ecosystem can easily take advantage of a multitude of
+            third party libraries, both React-specific and more general purpose.
+            Some of the libraries I have used with frequency include:
+        </p>
+        <ul>
+            <li>AmCharts</li>
+            <li>Axios</li>
+            <li>Classnames</li>
+            <li>DayJs</li>
+            <li>Formik (with Yup)</li>
+            <li>Node-Sass</li>
+            <li>React-Router</li>
+            <li>React-Spring</li>
+            <li>Redux</li>
+            <li>Redux-Saga</li>
+        </ul>
+        <p> ...amongst many others!</p>
     </div>
 )
 

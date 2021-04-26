@@ -17,15 +17,6 @@
             "text": "+44 7383 156359"
         },
         {
-            "type": "cv",
-            "id": 3,
-            "aClass": "contactLink",
-            "href": "cv",
-            "target": "_blank",
-            "icon": "file",
-            "text": "CV: Download"
-        },
-        {
             "type": "linked-in",
             "id": 4,
             "aClass": "contactLink",
